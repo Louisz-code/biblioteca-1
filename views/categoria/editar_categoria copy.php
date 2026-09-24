@@ -1,5 +1,10 @@
 <?php
 require_once __DIR__ . "/../../templates/_cabecalho.php";
+require_once __DIR__ . "/../../models/categoria.php";
+$id = $_GET['id'];
+
+$categoria = new Categoria;
+$categoria->carregar($id);
 ?>
 
 <main class="main-detalhe">
@@ -7,10 +12,12 @@ require_once __DIR__ . "/../../templates/_cabecalho.php";
 
         <div class="form-item">
             <label for="nome">Nome Da Categoria</label>
-            <input type="text" name="nome" id="nome">
+            <input type="text" name="nome" id="nome" value="<?= $Categoria->getNome() ?>">
         </div>
 
-        <button type="submit">Cadastrar</button>
+        <input type="hidden" name="id" value="<?= $categoria->getId() ?>">
+
+        <button type="submit">Atualizar</button>
     </form>
 </main>
 
